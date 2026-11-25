@@ -1,5 +1,12 @@
 ﻿Q3. What happens to the bounding boxes with update + fullRefit?
+    The bounding boxes just expand / contract based on the circle's positions after their movement is applied.
+    They are not reformed even when the circles may get very far apart and therefore making the BVH out of date. 
 
 Q4. What happens with reset (rebuild every frame) instead?
+    The bounding boxes are recalculated based on the new positions of each circle, therefore the tree is restructured appropiately and boxes
+    are moved to be around different circles as they move. 
 
 Q5. Why are some circles drawn with their sides cut off?
+    Before the bounding boxes were redrawn using the reset() method, the circles would get cut off once they moved outside of the bounding boxes. 
+    This is because the tree is drawn in layers as it is traversed. Once the leaf layers (the circles) move outside of their bounding boxes, 
+    the order of branches drawn results in them being covered up by other bounding boxes drawn later. 

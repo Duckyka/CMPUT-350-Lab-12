@@ -29,6 +29,10 @@ else ()
     endif ()
 endif ()
 
+set(GLAD_DIR ${CMAKE_CURRENT_SOURCE_DIR}/extern/glad)
+set(GLAD_INCLUDE_DIR ${GLAD_DIR}/include)
+set(GLAD_SRC ${GLAD_DIR}/src/glad.c)
+
 add_executable(main src/main.cpp)
 target_link_libraries(main PRIVATE
     SFML::Graphics
